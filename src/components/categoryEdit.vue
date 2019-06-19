@@ -30,7 +30,10 @@ export default {
     }
   },
   created() {
-    
+
+  },
+  mounted() {
+    console.log(this.$route);
   },
   methods: {
     onSubmit() {

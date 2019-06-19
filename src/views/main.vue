@@ -7,8 +7,8 @@
         <el-submenu index="1">
           <template slot="title">分类</template>
           <el-menu-item-group>
-            <el-menu-item index="/categories/create">新建分类</el-menu-item>
-            <el-menu-item index="/category">分类列表</el-menu-item>
+            <el-menu-item @click="onCreate">新建分类</el-menu-item>
+            <el-menu-item>分类列表</el-menu-item>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>
@@ -27,7 +27,12 @@
         <span>王小虎</span>
       </el-header>
       <el-main>
-        <router-view></router-view>
+        <router-view>
+        </router-view>
+      </el-main>
+      <el-main>
+        <router-view name="a">
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -56,6 +61,17 @@ export default {
     };
     return {
       tableData: Array(20).fill(item)
+    }
+  },
+  methods: {
+    onCreate() {
+      this.$router.push({
+        name: 'categoryCreate',
+        params: { userid: 123 },
+        query: {
+          dataval: 'admin'
+        }
+      })
     }
   }
 };
